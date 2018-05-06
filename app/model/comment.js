@@ -1,14 +1,38 @@
- module.exports = app => {
-     const mongoose = app.mongoose;
-     const Schema = mongoose.Schema;
+//  评论表
 
-     const commentSchema = new Schema({
-         time: { type: Number },
-         text: { type: String },
-         id: { type: Number },
-         uid: { type: Number },
-         subComment: { type: Array }
-     });
 
-     return mongoose.model('collectionVolume', commentSchema);
- }
+'use strict';
+
+module.exports = app => {
+    const {
+        STRING,
+        INTEGER,
+        ARRAY
+    } = app.Sequelize;
+
+    const CommentModel = app.model.define('Comment', {
+        id: {
+            type: INTEGER(20),
+            allowNull: false,
+            primaryKey: true,
+        },
+        uid: {
+            type: INTEGER(20),
+            allowNull: false,
+        },
+        text: {
+            type: STRING(300),
+            allowNull: false,
+            defaultValue: 'undefined',
+        },
+        subComment: {
+            type: ARRAY(INTEGER),
+            allowNull: true,
+            defaultValue: 'null',
+        }
+    }, {
+        timestamps: false
+    });
+
+    return CommentModel;
+};

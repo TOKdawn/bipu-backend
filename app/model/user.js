@@ -1,16 +1,43 @@
    // {app_root}/app/model/user.js
-   module.exports = app => {
-       const mongoose = app.mongoose;
-       const Schema = mongoose.Schema;
+   //    用户表
 
-       const UserSchema = new Schema({
-           id: { type: Number },
-           avatar: { type: String },
-           name: { type: String },
-           role: { type: Number },
-           createTime: { type: Number },
-           updateTime: { type: Number }
+
+   'use strict';
+
+   module.exports = app => {
+       const {
+           STRING,
+           INTEGER
+       } = app.Sequelize;
+       const UserModel = app.model.define('User', {
+           id: {
+               type: INTEGER(20),
+               allowNull: false,
+               primaryKey: true,
+           },
+           avatar: {
+               type: STRING(200),
+               allowNull: true,
+           },
+           name: {
+               type: STRING(10),
+               allowNull: false,
+               defaultValue: 'undefined',
+           },
+           signature: {
+               type: STRING(100),
+               allowNull: true,
+               defaultValue: 'undefined',
+           },
+           role: { //-1已删除 0不可编辑 1可编辑 2回收站
+               type: INTEGER(5),
+               allowNull: false,
+               defaultValue: 1,
+           }
+
+       }, {
+           timestamps: false
        });
 
-       return mongoose.model('User', UserSchema);
-   }
+       return UserModel;
+   };

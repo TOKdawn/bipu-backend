@@ -1,15 +1,47 @@
-module.exports = app => {
-    const mongoose = app.mongoose;
-    const Schema = mongoose.Schema;
+// 谱册表
 
-    const VolumeSchema = new Schema({
-        id: { type: Number },
-        photo: { type: String },
-        title: { type: String },
-        describe: { type: String },
-        status: { type: Number, default: 1 }, //-1已删除 0不可编辑 1可编辑 2回收站
-        comment: { type: Array }
+'use strict';
+
+module.exports = app => {
+    const {
+        STRING,
+        INTEGER,
+        ARRAY
+    } = app.Sequelize;
+
+    const VolumeModel = app.model.define('Volume', {
+        id: {
+            type: INTEGER(20),
+            allowNull: false,
+            primaryKey: true,
+        },
+        photo: {
+            type: STRING(200),
+            allowNull: true,
+        },
+        title: {
+            type: STRING(50),
+            allowNull: false,
+            defaultValue: 'undefined',
+        },
+        describe: {
+            type: STRING(300),
+            allowNull: true,
+            defaultValue: 'undefined',
+        },
+        status: { //-1已删除 0不可编辑 1可编辑 2回收站
+            type: INTEGER(5),
+            allowNull: false,
+            defaultValue: 1,
+        },
+        comment: {
+            type: ARRAY(INTEGER),
+            allowNull: true,
+            defaultValue: 'null',
+        }
+    }, {
+        timestamps: false
     });
 
-    return mongoose.model('Volume', VolumeSchema);
-}
+    return VolumeModel;
+};

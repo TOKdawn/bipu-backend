@@ -7,6 +7,19 @@
     ` GET  /user/:uid`
 
 
+    返回参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | id         | number  |  用户id  |
+    | avatar     | string  |  用户头像 |
+    | name       | srting  |  用户名   |
+    | role       | number  |  用户角色 |
+   
+
+
+
+
 
 1. List volumes in one's collection
 
@@ -28,7 +41,16 @@
     | owned      | boolean  |  是否只查询自己创建的谱册 |
 
     
+    返回参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | total      | number  |  总记录数 |
+    | data      | array  |  谱册列表   |
     
+  
+
+
  
 
     
@@ -51,6 +73,8 @@
             vid:123456;
         }
     ```
+
+    
 
 3. Delete a volume from a collection （需验证）
 
@@ -124,6 +148,15 @@
     | pagesize   | number  |  单页数目 |
  
 
+     返回参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | total      | number  |  总记录数 |
+    | data      | array  |  谱册列表   |
+    
+  
+
 8. Add a score to a volume （需验证）
 
     往一个特定谱册里添加一个谱子
@@ -149,6 +182,39 @@
     | --------   | -----:  | :----:  |
     | offset     | number  |  当前页数 |
     | pagesize   | number  |  单页数目 |
+
+
+     返回参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | time       | number  |  评论时间 |
+    | text       | string |  评论内容  |
+    | id         | number  |  评论id  |
+    | subcomment | array   |  子评论信息|
+    |   user      | object  | 评论者信息 |
+   
+
+    user信息
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | name       | srting  |  用户名  |
+    |  avatar    | string |  用户头像  |
+    | id         | number  |  用户id  |
+
+    subcomment信息
+    | 参数        | 类型    |  描述    |
+    | time       | number  | 评论时间  |
+    | text       | string  |  评论内容 |
+    | id         | number  |  评论id   |
+    | fatheruser | array   | 子评论信息 |
+    |   user     | object  | 评论者信息 |
+   
+    
+  
+
+
+
 
 11. Create comment
 

@@ -1,11 +1,26 @@
- module.exports = app => {
-     const mongoose = app.mongoose;
-     const Schema = mongoose.Schema;
+//  用户创建谱册表
+'use strict';
 
-     const ownVolumeSchema = new Schema({
-         uid: { type: Number },
-         vid: { type: Number }
-     });
+module.exports = app => {
+    const {
+        STRING,
+        INTEGER
+    } = app.Sequelize;
+    const ownVolumeModel = app.model.define('ownVolume', {
+        vid: {
+            type: INTEGER(20),
+            allowNull: false,
+            primaryKey: true,
+        },
+        uid: {
+            type: INTEGER(20),
+            allowNull: false,
 
-     return mongoose.model('ownVolume', ownVolumeSchema);
- }
+        }
+
+    }, {
+        timestamps: false
+    });
+
+    return ownVolumeModel;
+};
