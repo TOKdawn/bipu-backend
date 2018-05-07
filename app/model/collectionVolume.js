@@ -16,7 +16,6 @@
          uid: {
              type: INTEGER(20),
              allowNull: false,
-
          }
 
      }, {
