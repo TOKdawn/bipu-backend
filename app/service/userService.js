@@ -21,15 +21,18 @@ class UserService extends Service {
     }
     async getUserCollection(uid, offset, pagesize, owned) {
         // this.Volume.belongsTo(this.CollectionVolume, { foreignKey: 'vid', sourceKey: 'id' });
+        let tablename = !owned ? 'collectionVolume' : 'ownVolume';
         const data = await this.Volume.findAll({
             // attributes: ['vid', 'uid'],
             where: {
                 id: {
                     $in: this.app.Sequelize.literal(
-                        '(SELECT vid FROM "collectionVolume" WHERE uid = ' + uid + ')'
+                        `(SELECT vid FROM "${tablename}" WHERE uid = ${uid})`
                     )
                 }
-            }
+            },
+            limit: pagesize,
+            offset
         });
         console.log(data)
         return data;
