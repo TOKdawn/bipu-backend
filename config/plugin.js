@@ -1,6 +1,6 @@
 'use strict';
 exports.sequelize = {
-        enable: ture,
+        enable: true,
         package: 'egg-sequelize'
     }
     // had enabled by egg

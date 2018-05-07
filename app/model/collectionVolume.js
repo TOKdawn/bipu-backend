@@ -8,10 +8,16 @@
          INTEGER
      } = app.Sequelize;
      const collectionVolumeModel = app.model.define('collectionVolume', {
-         vid: {
+         id: {
              type: INTEGER(20),
              allowNull: false,
              primaryKey: true,
+             autoIncrement: true
+         },
+         vid: {
+             type: INTEGER(20),
+             allowNull: false,
+
          },
          uid: {
              type: INTEGER(20),
@@ -19,8 +25,12 @@
          }
 
      }, {
-         timestamps: false
+         createAt: 'createAt',
+         updateAt: 'updateAt',
+         timestamps: false,
+         tableName: 'collectionVolume' // 设置表名
      });
+
 
      return collectionVolumeModel;
  };

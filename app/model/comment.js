@@ -7,7 +7,8 @@ module.exports = app => {
     const {
         STRING,
         INTEGER,
-        ARRAY
+        ARRAY,
+        DATE
     } = app.Sequelize;
 
     const CommentModel = app.model.define('Comment', {
@@ -29,9 +30,20 @@ module.exports = app => {
             type: ARRAY(INTEGER),
             allowNull: true,
             defaultValue: 'null',
+        },
+        createAt: {
+            type: DATE,
+            allowNull: true,
+        },
+        updateAt: {
+            type: DATE,
+            allowNull: true,
         }
+
     }, {
-        timestamps: false
+        createAt: 'createAt',
+        updateAt: 'updateAt',
+        tableName: 'Comment' // 设置表名
     });
 
     return CommentModel;

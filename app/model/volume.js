@@ -6,7 +6,8 @@ module.exports = app => {
     const {
         STRING,
         INTEGER,
-        ARRAY
+        ARRAY,
+        DATE
     } = app.Sequelize;
 
     const VolumeModel = app.model.define('Volume', {
@@ -38,9 +39,20 @@ module.exports = app => {
             type: ARRAY(INTEGER),
             allowNull: true,
             defaultValue: 'null',
+        },
+        createAt: {
+            type: DATE,
+            allowNull: true,
+        },
+        updateAt: {
+            type: DATE,
+            allowNull: true,
         }
     }, {
-        timestamps: false
+        createAt: 'createAt',
+        updateAt: 'updateAt',
+        timestamps: false, //时间戳
+        tableName: 'Volume' // 设置表名
     });
 
     return VolumeModel;

@@ -7,19 +7,24 @@ module.exports = app => {
         INTEGER
     } = app.Sequelize;
     const ownVolumeModel = app.model.define('ownVolume', {
-        vid: {
+        id: {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
         },
-        uid: {
+        vid: {
             type: INTEGER(20),
             allowNull: false,
 
+        },
+        uid: {
+            type: INTEGER(20),
+            allowNull: false,
         }
-
     }, {
-        timestamps: false
+        timestamps: false,
+        tableName: 'ownVolume' // 设置表名
+
     });
 
     return ownVolumeModel;

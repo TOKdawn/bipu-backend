@@ -16,54 +16,60 @@ class VolumeController extends Controller {
     async getVolumeList() {
         const { uid } = this.ctx.params;
         const { offset = DEFAULTOFFSET, pagesize = DEFAULTVOLUMEPAGESIZE, role = 'normal' } = this.ctx.query;
-        const response = await this.userService.getVolumeList(uid, offset, pagesize, role);
+        const response = await this.VolumeService.getVolumeList(uid, offset, pagesize, role);
         this.ctx.body = response;
     }
 
     async createVolume() {
         const { title, describe } = this.ctx.body;
-        const response = await this.userService.getVolumeList(title, describe);
+        const response = await this.VolumeService.getVolumeList(title, describe);
         this.ctx.body = response;
 
     }
 
     async editVolume() {
         const { title, describe } = this.ctx.body;
-        const response = await this.userService.getVolumeList(title, describe);
+        const response = await this.VolumeService.getVolumeList(title, describe);
         this.ctx.body = response;
     }
 
     async deleteVolume() {
         const { vid } = this.ctx.params;
-        const response = await this.userService.deleteVolume(vid);
+        const response = await this.VolumeService.deleteVolume(vid);
         this.ctx.body = response;
     }
 
     async getVolumeInfo() {
         const { vid } = this.ctx.params;
-        const response = await this.userService.getVolumeInfo(vid);
+        const response = await this.VolumeService.getVolumeInfo(vid);
         this.ctx.body = response;
     }
 
     async getVolumeScore() {
         const { vid } = this.ctx.params;
         const { offset = DEFAULTOFFSET, pagesize = DEFAULTSCOREPAGESIZE } = this.ctx.query;
-        const response = await this.userService.getVolumeScore(vid, offset, pagesize);
+        const response = await this.VolumeService.getVolumeScore(vid, offset, pagesize);
         this.ctx.body = response;
     }
 
     async addVolumeScore() {
         const { vid, sid } = this.ctx.body;
-        const response = await this.userService.addVolumeScore(uid, sid);
+        const response = await this.VolumeService.addVolumeScore(uid, sid);
         this.ctx.body = response;
     }
 
     async deleteVolume() {
         const { vid, sid } = this.ctx.params;
-        const response = await this.userService.deleteVolume(vid, sid);
+        const response = await this.VolumeService.deleteVolume(vid, sid);
+        this.ctx.body = response;
+    }
+
+    async deleteVolumeScore() {
+        const { vid, uid } = this.ctx.params;;
+        const response = await this.VolumeService.deleteVolumeScore(vid, uid);
         this.ctx.body = response;
     }
 
 }
 
-module.exports = UserController;
+module.exports = VolumeController;

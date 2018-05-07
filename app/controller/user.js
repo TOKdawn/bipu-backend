@@ -14,10 +14,13 @@ class UserController extends Controller {
     async getInfo() {
         const { uid } = this.ctx.params; // 等价于 const uid = this.ctx.params.uid;
         const response = await this.userService.getInfo(uid);
-        this.ctx.body = response;
+        if (response) {
+            this.ctx.body = response;
+        } else {
+            this.ctx.helper.createRes(404, 'User is not found QAQ');
+
+        }
     }
-
-
 
     async getUserCollection() {
         const { uid } = this.ctx.params;

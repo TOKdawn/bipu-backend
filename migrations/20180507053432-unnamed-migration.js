@@ -37,7 +37,8 @@ module.exports = {
                 allowNull: false,
                 defaultValue: 1,
             },
-            created_at: DATE,
+            createAt: DATE,
+            updateAt: DATE
         });
 
         await queryInterface.createTable('Comment', {
@@ -67,8 +68,8 @@ module.exports = {
                 })
 
             },
-            created_at: DATE,
-            updated_at: DATE
+            createAt: DATE,
+            updateAt: DATE
         });
         await queryInterface.createTable('Volume', {
             id: {
@@ -107,12 +108,17 @@ module.exports = {
                 })
 
             },
-            created_at: DATE,
-            updated_at: DATE
+            createAt: DATE,
+            updateAt: DATE
         });
         await queryInterface.createTable('ownVolume', {
-            vid: { //数组外键,用于查评论表
+            id: {
+                type: INTEGER(20),
+                allowNull: false,
                 primaryKey: true,
+            },
+            vid: { //数组外键,用于查评论表
+
                 type: INTEGER({
                     references: {
                         model: 'Volume', //对应外键表
@@ -136,8 +142,12 @@ module.exports = {
             }
         });
         await queryInterface.createTable('collectionVolume', {
-            vid: { //数组外键,用于查评论表
+            id: {
+                type: INTEGER(20),
+                allowNull: false,
                 primaryKey: true,
+            },
+            vid: { //数组外键,用于查评论表
                 type: INTEGER({
                     references: {
                         model: 'Volume', //对应外键表
@@ -157,9 +167,16 @@ module.exports = {
                     },
                     allowNull: true
                 })
-            }
+            },
+            createAt: DATE,
+            updateAt: DATE
         });
         await queryInterface.createTable('scoreVolume', {
+            id: {
+                type: INTEGER(20),
+                allowNull: false,
+                primaryKey: true,
+            },
             sid: {
                 type: INTEGER(20),
                 allowNull: false,

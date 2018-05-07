@@ -7,7 +7,8 @@
    module.exports = app => {
        const {
            STRING,
-           INTEGER
+           INTEGER,
+           DATE
        } = app.Sequelize;
        const UserModel = app.model.define('User', {
            id: {
@@ -33,10 +34,21 @@
                type: INTEGER(5),
                allowNull: false,
                defaultValue: 1,
+           },
+           createAt: {
+               type: DATE,
+               allowNull: true,
+           },
+           updateAt: {
+               type: DATE,
+               allowNull: true,
            }
 
        }, {
-           timestamps: false
+           createAt: 'createAt',
+           updateAt: 'updateAt',
+           timestamps: false,
+           freezeTableName: true // 默认表名会被加s,此选项强制表名跟model一致
        });
 
        return UserModel;
