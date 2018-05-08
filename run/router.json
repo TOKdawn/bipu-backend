@@ -18,6 +18,19 @@
       "HEAD",
       "GET"
     ],
+    "paramNames": [],
+    "path": "/user/collection/",
+    "regexp": "/^\\/user\\/collection(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
     "paramNames": [
       {
         "name": "uid",
@@ -56,19 +69,6 @@
     ],
     "path": "/user/collection/:uid",
     "regexp": "/^\\/user\\/collection\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
-    "paramNames": [],
-    "path": "/user/collection/",
-    "regexp": "/^\\/user\\/collection(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

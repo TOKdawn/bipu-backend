@@ -17,6 +17,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement: true
             },
             avatar: {
                 type: STRING(200),
@@ -46,6 +47,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement: true
             },
             uid: {
                 type: INTEGER(20),
@@ -76,6 +78,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement: true
             },
             photo: {
                 type: STRING(200),
@@ -116,6 +119,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement: true
             },
             vid: { //数组外键,用于查评论表
 
@@ -146,6 +150,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement: true
             },
             vid: { //数组外键,用于查评论表
                 type: INTEGER({
@@ -176,6 +181,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
+                autoIncrement: true
             },
             sid: {
                 type: INTEGER(20),
@@ -208,13 +214,8 @@ module.exports = {
         await queryInterface.dropTable('collectionVolume');
         await queryInterface.dropTable('ownVolume');
         await queryInterface.dropTable('Volume');
-
         await queryInterface.dropTable('Comment');
         await queryInterface.dropTable('User');
-
-
-
-
 
         /*
           Add reverting commands here.

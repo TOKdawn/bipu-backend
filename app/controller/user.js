@@ -9,6 +9,7 @@ class UserController extends Controller {
     constructor(ctx) { //UserController 构造函数;
         super(ctx);
         this.userService = ctx.service.userService;
+        this.ctx.session.uid = 123; //测试用
     }
 
     async getInfo() {
@@ -31,20 +32,34 @@ class UserController extends Controller {
 
     async getMyCollection() {
         // 获取session里的uid
+
         const { uid } = this.ctx.session;
-        const response = await this.userService.getUserCollection(uid);
+
+        const {
+            offset = DEFAULTOFFSET, pagesize = DEFAULTVOLUMEPAGESIZE, owned = true
+        } = this.ctx.query;
+        const response = await this.userService.getUserCollection(uid, offset, pagesize, owned);
         this.ctx.body = response;
     }
 
     async addCollectionVolume() {
-        const { vid } = this.ctx.body;
-        const response = await this.userService.addCollectionVolume(vid);
-        this.ctx.body = response;
+        const {
+            vid
+        } = this.ctx.request.body;
+        const { uid } = this.ctx.session;
+        const response = await this.userService.addCollectionVolume(uid, vid);
+        if (!response[response.length - 1]) { //check is new record
+            this.ctx.helper.createRes(412, ' volume has been collected Orz')
+        } else {
+            this.ctx.helper.createRes(200, 'collection success QwQ')
+        }
     }
 
     async deleteCollectionVolume() {
         const { vid } = this.ctx.params;
-        const response = await this.userService.deleteCollectionVolume(vid);
+        const { uid } = this.ctx.session;
+        const response = await this.userService.deleteCollectionVolume(uid, vid);
+        console.log(response);
         this.ctx.body = response;
     }
 

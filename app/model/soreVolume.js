@@ -13,6 +13,7 @@
              type: INTEGER(20),
              allowNull: false,
              primaryKey: true,
+             autoIncrement: true
          },
          vid: {
              type: INTEGER(20),
@@ -22,7 +23,6 @@
          sid: {
              type: INTEGER(20),
              allowNull: false,
-
          }
 
      }, {

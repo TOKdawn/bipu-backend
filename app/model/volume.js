@@ -15,6 +15,7 @@ module.exports = app => {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
+            autoIncrement: true
         },
         photo: {
             type: STRING(200),
@@ -38,7 +39,7 @@ module.exports = app => {
         comment: {
             type: ARRAY(INTEGER),
             allowNull: true,
-            defaultValue: 'null',
+            defaultValue: null,
         },
         createAt: {
             type: DATE,

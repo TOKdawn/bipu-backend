@@ -9,6 +9,13 @@ module.exports = appInfo => {
             port: '5432',
             username: 'dawn',
             password: ''
+        },
+        security: {
+
+            csrf: {
+                enable: false
+            }
+
         }
     };
 

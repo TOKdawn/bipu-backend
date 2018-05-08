@@ -16,6 +16,7 @@ module.exports = app => {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
+            autoIncrement: true
         },
         uid: {
             type: INTEGER(20),

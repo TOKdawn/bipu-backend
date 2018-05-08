@@ -10,18 +10,17 @@ class UserService extends Service {
     }
     async getInfo(uid) {
         // console.log(this.ctx.model);
-
         const user = await this.User.findOne({
             where: {
                 id: uid
             }
         });
-        console.log(user);
+        // console.log(user);
         return user;
     }
     async getUserCollection(uid, offset, pagesize, owned) {
         // this.Volume.belongsTo(this.CollectionVolume, { foreignKey: 'vid', sourceKey: 'id' });
-        let tablename = !owned ? 'collectionVolume' : 'ownVolume';
+        const tablename = !owned ? 'collectionVolume' : 'ownVolume';
         const data = await this.Volume.findAll({
             // attributes: ['vid', 'uid'],
             where: {
@@ -34,7 +33,27 @@ class UserService extends Service {
             limit: pagesize,
             offset
         });
-        console.log(data)
+        // console.log(data)
+        return data;
+    }
+    async addCollectionVolume(uid, vid) {
+        const data = await this.CollectionVolume.findOrCreate({
+            where: {
+                uid,
+                vid
+            }
+        })
+        return data;
+    }
+    async deleteCollectionVolume(uid, vid) {
+        // const Op = this.app.Sequelize.Op
+        const data = await this.CollectionVolume.destroy({
+                where: {
+                    uid: uid,
+                    vid: vid
+                }
+            })
+            // console.log(data);
         return data;
     }
 }

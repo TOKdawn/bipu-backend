@@ -15,6 +15,7 @@
                type: INTEGER(20),
                allowNull: false,
                primaryKey: true,
+               autoIncrement: true
            },
            avatar: {
                type: STRING(200),

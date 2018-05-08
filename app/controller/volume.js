@@ -9,7 +9,8 @@ class VolumeController extends Controller {
 
     constructor(ctx) {
         super(ctx);
-        this.VolumeService = ctx.service.VolumeService;
+        this.VolumeService = ctx.service.volumeService;
+        this.ctx.session.uid = 123;
     }
 
 
@@ -21,14 +22,23 @@ class VolumeController extends Controller {
     }
 
     async createVolume() {
-        const { title, describe } = this.ctx.body;
-        const response = await this.VolumeService.getVolumeList(title, describe);
+        const {
+            title,
+            describe
+        } = this.ctx.request.body;
+        const {
+            uid
+        } = this.ctx.session;
+        const response = await this.VolumeService.createVolume(title, describe, uid);
         this.ctx.body = response;
 
     }
 
     async editVolume() {
-        const { title, describe } = this.ctx.body;
+        const {
+            title,
+            describe
+        } = this.ctx.request.body;
         const response = await this.VolumeService.getVolumeList(title, describe);
         this.ctx.body = response;
     }
@@ -53,7 +63,10 @@ class VolumeController extends Controller {
     }
 
     async addVolumeScore() {
-        const { vid, sid } = this.ctx.body;
+        const {
+            vid,
+            sid
+        } = this.ctx.request.body;
         const response = await this.VolumeService.addVolumeScore(uid, sid);
         this.ctx.body = response;
     }

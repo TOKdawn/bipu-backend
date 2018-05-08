@@ -30,6 +30,7 @@
     }
 ```
 
+```javascript 
     async getUserCollection(uid, offset, pagesize, owned) {
         this.CollectionVolume.hasMany(this.Volume, { foreignKey: 'id', sourceKey: 'vid' });
         const data = await this.CollectionVolume.findAll({
@@ -44,3 +45,4 @@
         console.log(data)
         return data;
     }
+    ```

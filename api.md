@@ -29,7 +29,7 @@
 
     查看自己收藏的所有谱册
 
-     ` GET   /user/collection/:uid/`
+     ` GET   /user/collection/`
 
   
     请求参数
@@ -120,6 +120,15 @@
     创建一个谱册
 
     ` POST  /volume`
+
+
+   请求参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | offset     | number  |  当前页数 |
+    | pagesize   | number  |  单页数目 |
+ 
 
 4. Edit a volume （需验证）
 

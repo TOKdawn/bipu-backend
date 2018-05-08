@@ -6,10 +6,10 @@
 module.exports = app => {
     const { router, controller } = app;
     router.get('/', controller.home.index);
+    router.get('/user/collection/', controller.user.getUserCollection);
     router.get('/user/:uid', controller.user.getInfo);
 
     router.get('/user/collection/:uid', controller.user.getUserCollection);
-    router.get('/user/collection/', controller.user.getMyCollection);
     router.post('/user/collection', controller.user.addCollectionVolume);
     router.delete('/user/collection/:vid', controller.user.deleteCollectionVolume);
 
