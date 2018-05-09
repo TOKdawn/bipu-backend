@@ -163,12 +163,12 @@
 
     ` DELETE  volume/:vid`
 
+
 7.  List scores in a volume
 
     返回一个给定id的谱册里的所有谱子
 
     ` GET  /volume/:vid/score`
-
 
     请求参数
 
@@ -187,17 +187,29 @@
     
   
 
+
 8. Add a score to a volume （需验证）
 
     往一个特定谱册里添加一个谱子
 
     ` POST  /volume/:vid/score`
 
+    请求参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | sid        | number  |  谱子id  |
+  
+
+
+
 9. Delete a score from a volume （需验证）
 
     从一个谱册里删除一个谱子
 
     ` DELETE  /volume/:vid/score/:sid`
+  
+  
 
 
 10. Search comment 

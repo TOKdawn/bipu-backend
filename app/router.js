@@ -20,6 +20,7 @@ module.exports = app => {
     router.post('/volume', controller.volume.createVolume); //文件上传
 
     router.delete('/volume/:vid', controller.volume.deleteVolume);
+
     router.put('/volume/:vid', controller.volume.editVolume); //文件上传
 
     router.get('/volume/:vid', controller.volume.getVolumeInfo);

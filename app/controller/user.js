@@ -59,7 +59,13 @@ class UserController extends Controller {
         const { vid } = this.ctx.params;
         const { uid } = this.ctx.session;
         const response = await this.userService.deleteCollectionVolume(uid, vid);
-        console.log(response);
+        if (response) {
+            this.ctx.helper.createRes(200, 'Delete success QwQ')
+
+        } else {
+            this.ctx.helper.createRes(409, 'Delete err Orz  ')
+
+        }
         this.ctx.body = response;
     }
 

@@ -10,7 +10,7 @@ class VolumeController extends Controller {
     constructor(ctx) {
         super(ctx);
         this.VolumeService = ctx.service.volumeService;
-        this.ctx.session.uid = 123;
+        this.ctx.session.uid = 123; //测试用
     }
 
 
@@ -50,7 +50,15 @@ class VolumeController extends Controller {
         const {
             uid
         } = this.ctx.session;
+        console.log("ddddddddddsaaaaaaaaaaaaaa", uid)
         const response = await this.VolumeService.deleteVolume(vid, uid);
+        if (response) {
+            this.ctx.helper.createRes(200, 'Delete success QwQ')
+
+        } else {
+            this.ctx.helper.createRes(409, 'Delete err Orz  ')
+
+        }
         this.ctx.body = response;
     }
 
@@ -69,22 +77,19 @@ class VolumeController extends Controller {
 
     async addVolumeScore() {
         const {
-            vid,
+
             sid
         } = this.ctx.request.body;
-        const response = await this.VolumeService.addVolumeScore(uid, sid);
-        this.ctx.body = response;
-    }
-
-    async deleteVolume() {
-        const { vid, sid } = this.ctx.params;
-        const response = await this.VolumeService.deleteVolume(vid, sid);
+        const {
+            vid
+        } = this.ctx.params;
+        const response = await this.VolumeService.addVolumeScore(vid, sid);
         this.ctx.body = response;
     }
 
     async deleteVolumeScore() {
-        const { vid, uid } = this.ctx.params;;
-        const response = await this.VolumeService.deleteVolumeScore(vid, uid);
+        const { vid, sid } = this.ctx.params;;
+        const response = await this.VolumeService.deleteVolumeScore(vid, sid);
         this.ctx.body = response;
     }
 

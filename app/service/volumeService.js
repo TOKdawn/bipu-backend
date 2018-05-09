@@ -46,7 +46,56 @@ class VolumeService extends Service {
             }
         })
     }
-
+    async deleteVolume(vid, uid) {
+        const t = await this.ctx.model.transaction();
+        try {
+            const dele = await this.OwnVolume.destroy({
+                where: {
+                    uid,
+                    vid
+                }
+            })
+            const data = await this.Volume.update({
+                status: 2
+            }, {
+                where: {
+                    id: vid
+                }
+            })
+            await t.commit();
+            return dele;
+        } catch (err) {
+            await t.rollback();
+            return err
+        }
+    }
+    async getVolumeInfo(vid) {
+        const Volume = await this.Volume.findOne({
+            where: {
+                id: vid
+            }
+        });
+        return Volume;
+    }
+    async addVolumeScore(vid, sid) {
+        const data = await this.SoreVolume.findOrCreate({
+            where: {
+                sid,
+                vid
+            }
+        })
+        return data;
+    }
+    async deleteVolumeScore(vid, sid) {
+        const data = await this.SoreVolume.destroy({
+                where: {
+                    vid,
+                    sid
+                }
+            })
+            // console.log(data);
+        return data;
+    }
 
 }
 
