@@ -16,7 +16,25 @@ module.exports = appInfo => {
                 enable: false
             }
 
+        },
+        multipart: {
+            whitelist: [
+                '.png',
+                '.jpg'
+            ],
+            fileSize: '3mb',
+        },
+        oss: {
+            client: {
+                accessKeyId: 'LTAIWoXg7pnODuaw',
+                accessKeySecret: 'jZEI94u7dOLXQnhjgtyOygxSzUjBqJ',
+                bucket: 'bipu',
+                endpoint: 'oss-cn-beijing.aliyuncs.com',
+                timeout: '10s',
+            },
+            useAgent: true
         }
+
     };
 
     // use for cookie sign key, should change to your own and keep security

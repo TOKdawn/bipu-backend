@@ -45,9 +45,8 @@
 
     | 参数        | 类型    |  描述    |
     | --------   | -----:  | :----:  |
-    | total      | number  |  总记录数 |
     | data      | array  |  谱册列表   |
-    
+    s.p.需要判断每一个谱册的status 为1的渲染,为2的已经被删除,为0的不可删除
   
 
 
@@ -130,11 +129,33 @@
     | pagesize   | number  |  单页数目 |
  
 
+
 4. Edit a volume （需验证）
 
     编辑一个自己创建的谱册
 
     ` PUT /volume/:vid`
+    上传头像
+
+     `POST /upload`
+
+      返回参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | url      | string  |  上传返回连接 |
+
+
+
+
+  请求参数
+
+    | 参数        | 类型    |  描述    |
+    | --------   | -----:  | :----:  |
+    | title      | string  |  标题   |
+    | describe   | string  |  描述   |
+    | url        | string  |  封面连接 |
+    
 
 6. Delete a volume （需验证）
 

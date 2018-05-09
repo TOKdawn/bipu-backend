@@ -36,7 +36,7 @@ class UserController extends Controller {
         const { uid } = this.ctx.session;
 
         const {
-            offset = DEFAULTOFFSET, pagesize = DEFAULTVOLUMEPAGESIZE, owned = true
+            offset = DEFAULTOFFSET, pagesize = DEFAULTVOLUMEPAGESIZE, owned = false
         } = this.ctx.query;
         const response = await this.userService.getUserCollection(uid, offset, pagesize, owned);
         this.ctx.body = response;

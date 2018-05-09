@@ -6,7 +6,7 @@
 module.exports = app => {
     const { router, controller } = app;
     router.get('/', controller.home.index);
-    router.get('/user/collection/', controller.user.getUserCollection);
+    router.get('/user/collection/', controller.user.getMyCollection);
     router.get('/user/:uid', controller.user.getInfo);
 
     router.get('/user/collection/:uid', controller.user.getUserCollection);
@@ -30,6 +30,6 @@ module.exports = app => {
     router.post('/volume/:vid/score', controller.volume.addVolumeScore);
 
     router.delete('/volume/:vid/score/:sid', controller.volume.deleteVolumeScore);
-
+    router.post('/upload', controller.multipart.upload)
 
 };

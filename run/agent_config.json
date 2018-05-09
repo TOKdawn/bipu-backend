@@ -93,10 +93,13 @@
       "fieldNameSize": 100,
       "fieldSize": "100kb",
       "fields": 10,
-      "fileSize": "10mb",
+      "fileSize": "3mb",
       "files": 10,
       "fileExtensions": [],
-      "whitelist": null
+      "whitelist": [
+        ".png",
+        ".jpg"
+      ]
     },
     "development": {
       "watchDirs": [],
@@ -143,6 +146,19 @@
       "username": "dawn",
       "password": "<String len: 0>"
     },
+    "oss": {
+      "default": {
+        "timeout": "60s"
+      },
+      "useAgent": true,
+      "client": {
+        "accessKeyId": "LTAIWoXg7pnODuaw",
+        "accessKeySecret": "<String len: 30>",
+        "bucket": "bipu",
+        "endpoint": "oss-cn-beijing.aliyuncs.com",
+        "timeout": "10s"
+      }
+    },
     "env": "local",
     "name": "bipu",
     "keys": "<String len: 23>",
@@ -157,10 +173,12 @@
       "private": true,
       "dependencies": {
         "egg": "^2.2.1",
+        "egg-oss": "^1.1.0",
         "egg-scripts": "^2.5.0",
         "egg-sequelize": "^3.1.4",
         "pg": "^7.4.2",
-        "pg-hstore": "^2.3.2"
+        "pg-hstore": "^2.3.2",
+        "stream-wormhole": "^1.0.3"
       },
       "devDependencies": {
         "autod": "^3.0.1",
@@ -261,13 +279,15 @@
         "keepAlive": true,
         "freeSocketKeepAliveTimeout": 4000,
         "maxSockets": 9007199254740991,
-        "maxFreeSockets": 256
+        "maxFreeSockets": 256,
+        "timeout": 30000
       },
       "httpsAgent": {
         "keepAlive": true,
         "freeSocketKeepAliveTimeout": 4000,
         "maxSockets": 9007199254740991,
-        "maxFreeSockets": 256
+        "maxFreeSockets": 256,
+        "timeout": 30000
       }
     },
     "meta": {
@@ -454,6 +474,17 @@
       "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
       "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-sequelize@3.1.4@egg-sequelize",
       "version": "3.1.4"
+    },
+    "oss": {
+      "enable": true,
+      "package": "egg-oss",
+      "name": "oss",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
+      "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-oss@1.1.0@egg-oss",
+      "version": "1.1.0"
     }
   }
 }

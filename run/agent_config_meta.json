@@ -59,6 +59,30 @@
       "checkAddress": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-security@2.2.2@egg-security/config/config.default.js"
     }
   },
+  "multipart": {
+    "whitelist": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "fileSize": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "autoFields": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fields": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "files": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
+    "fileExtensions": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js"
+  },
+  "oss": {
+    "client": {
+      "accessKeyId": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+      "accessKeySecret": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+      "bucket": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+      "endpoint": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+      "timeout": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
+    },
+    "useAgent": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "default": {
+      "timeout": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-oss@1.1.0@egg-oss/config/config.default.js"
+    }
+  },
   "keys": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "middleware": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "session": {
@@ -92,17 +116,6 @@
       "default": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-watcher@3.0.0@egg-watcher/config/config.default.js",
       "development": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-watcher@3.0.0@egg-watcher/config/config.default.js"
     }
-  },
-  "multipart": {
-    "autoFields": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "defaultCharset": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "fieldNameSize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "fieldSize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "fields": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "fileSize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "files": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "fileExtensions": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js",
-    "whitelist": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-multipart@2.0.0@egg-multipart/config/config.default.js"
   },
   "development": {
     "watchDirs": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-development@2.2.0@egg-development/config/config.default.js",
@@ -154,10 +167,12 @@
     "private": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
     "dependencies": {
       "egg": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-oss": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-scripts": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-sequelize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "pg": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
-      "pg-hstore": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js"
+      "pg-hstore": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "stream-wormhole": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js"
     },
     "devDependencies": {
       "autod": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",

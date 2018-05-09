@@ -31,21 +31,26 @@ class VolumeController extends Controller {
         } = this.ctx.session;
         const response = await this.VolumeService.createVolume(title, describe, uid);
         this.ctx.body = response;
-
     }
 
     async editVolume() {
         const {
             title,
-            describe
+            describe,
+            url
+
         } = this.ctx.request.body;
-        const response = await this.VolumeService.getVolumeList(title, describe);
+        const { vid } = this.ctx.params
+        const response = await this.VolumeService.editVolume(vid, title, describe, url);
         this.ctx.body = response;
     }
 
     async deleteVolume() {
         const { vid } = this.ctx.params;
-        const response = await this.VolumeService.deleteVolume(vid);
+        const {
+            uid
+        } = this.ctx.session;
+        const response = await this.VolumeService.deleteVolume(vid, uid);
         this.ctx.body = response;
     }
 
