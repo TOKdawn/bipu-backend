@@ -8,7 +8,8 @@ module.exports = app => {
         STRING,
         INTEGER,
         ARRAY,
-        DATE
+        DATE,
+        Deferrable
     } = app.Sequelize;
 
     const CommentModel = app.model.define('Comment', {
@@ -16,7 +17,7 @@ module.exports = app => {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         uid: {
             type: INTEGER(20),
@@ -28,23 +29,35 @@ module.exports = app => {
             defaultValue: 'undefined',
         },
         subComment: {
-            type: ARRAY(INTEGER),
-            allowNull: true,
-            defaultValue: 'null',
+            type: ARRAY({
+                type: INTEGER,
+                references: {
+                    model: 'Comment', // 对应外键表
+                    key: 'id', // 对应字段
+                    deferrable: Deferrable.INITIALLY_IMMEDIATE,
+                },
+                allowNull: true,
+            }),
         },
-        createAt: {
+        status: { // -1已删除 0不可编辑 1可编辑 2回收站
+            type: INTEGER(5),
+            allowNull: false,
+            defaultValue: 1,
+        },
+        created_at: {
             type: DATE,
             allowNull: true,
         },
-        updateAt: {
+        updated_at: {
             type: DATE,
             allowNull: true,
-        }
+        },
 
     }, {
-        createAt: 'createAt',
-        updateAt: 'updateAt',
-        tableName: 'Comment' // 设置表名
+        createAt: 'created_at',
+        updateAt: 'updated_at',
+
+        tableName: 'Comment', // 设置表名
     });
 
     return CommentModel;

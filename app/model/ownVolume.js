@@ -3,15 +3,15 @@
 
 module.exports = app => {
     const {
-        STRING,
-        INTEGER
+
+        INTEGER,
     } = app.Sequelize;
     const ownVolumeModel = app.model.define('ownVolume', {
         id: {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         vid: {
             type: INTEGER(20),
@@ -21,10 +21,10 @@ module.exports = app => {
         uid: {
             type: INTEGER(20),
             allowNull: false,
-        }
+        },
     }, {
         timestamps: false,
-        tableName: 'ownVolume' // 设置表名
+        tableName: 'ownVolume', // 设置表名
 
     });
 

@@ -120,13 +120,28 @@
 
     ` POST  /volume`
 
-
-   请求参数
+    
+    请求参数
 
     | 参数        | 类型    |  描述    |
     | --------   | -----:  | :----:  |
-    | offset     | number  |  当前页数 |
-    | pagesize   | number  |  单页数目 |
+    | name       | string    |  谱册名   |
+    | describe   | string    |  描述   |
+    
+    
+    返回示例
+    {
+    "status": 1,
+    "comment": null,
+    "id": 2,
+    "title": "未命名",
+    "describe": "测试用",
+    "photo": null,
+    "createAt": null,
+    "updateAt": null
+   }
+
+  
  
 
 
@@ -148,7 +163,7 @@
 
 
 
-  请求参数
+    请求参数
 
     | 参数        | 类型    |  描述    |
     | --------   | -----:  | :----:  |
@@ -156,6 +171,8 @@
     | describe   | string  |  描述   |
     | url        | string  |  封面连接 |
     
+
+    P.S.编辑的时候前端先把已知信息渲染给用户,三项都要传
 
 6. Delete a volume （需验证）
 
@@ -210,6 +227,7 @@
     ` DELETE  /volume/:vid/score/:sid`
   
   
+
 
 
 10. Search comment 
@@ -272,6 +290,14 @@
     | text       | String  |  评论内容 |
 
 
+
+12. delecte comment
+
+    删除评论
+
+    `DELETE /volume/:vid/comment/:cid `
+
+    
 <!-- ### collection（收藏的谱册）
 
 1. List volumes in one's collection

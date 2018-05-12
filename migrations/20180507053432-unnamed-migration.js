@@ -5,11 +5,11 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         const {
-            BOOLEAN,
+
             STRING,
             INTEGER,
             ARRAY,
-            DATE
+            DATE,
 
         } = Sequelize;
         await queryInterface.createTable('User', {
@@ -17,7 +17,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
             },
             avatar: {
                 type: STRING(200),
@@ -33,13 +33,13 @@ module.exports = {
                 allowNull: true,
                 defaultValue: 'undefined',
             },
-            role: { //-1已删除 0不可编辑 1可编辑 2回收站
+            role: { // -1已删除 0不可编辑 1可编辑 2回收站
                 type: INTEGER(5),
                 allowNull: false,
                 defaultValue: 1,
             },
-            createAt: DATE,
-            updateAt: DATE
+            created_at: DATE,
+            updated_at: DATE,
         });
 
         await queryInterface.createTable('Comment', {
@@ -47,7 +47,7 @@ module.exports = {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
             },
             uid: {
                 type: INTEGER(20),
@@ -58,27 +58,32 @@ module.exports = {
                 allowNull: false,
                 defaultValue: 'undefined',
             },
-            comment: { //数组外键,用于查评论表
+            status: { // -1已删除 0不可编辑 1可编辑 2回收站
+                type: INTEGER(5),
+                allowNull: false,
+                defaultValue: 1,
+            },
+            subComment: { // 数组外键,用于查评论表
                 type: ARRAY({
                     type: INTEGER,
                     references: {
-                        model: 'Comment', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'Comment', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
+                    allowNull: true,
+                }),
 
             },
-            createAt: DATE,
-            updateAt: DATE
+            created_at: DATE,
+            updated_at: DATE,
         });
         await queryInterface.createTable('Volume', {
             id: {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
             },
             photo: {
                 type: STRING(200),
@@ -94,122 +99,122 @@ module.exports = {
                 allowNull: true,
                 defaultValue: 'undefined',
             },
-            status: { //-1已删除 0不可编辑 1可编辑 2回收站
+            status: { // -1已删除 0不可编辑 1可编辑 2回收站
                 type: INTEGER(5),
                 allowNull: false,
                 defaultValue: 1,
             },
-            comment: { //数组外键,用于查评论表
+            comment: { // 数组外键,用于查评论表
                 type: ARRAY({
                     type: INTEGER,
                     references: {
-                        model: 'Comment', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'Comment', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
+                    allowNull: true,
+                }),
 
             },
-            createAt: DATE,
-            updateAt: DATE
+            created_at: DATE,
+            updated_at: DATE,
         });
         await queryInterface.createTable('ownVolume', {
             id: {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
             },
-            vid: { //数组外键,用于查评论表
+            vid: { // 数组外键,用于查评论表
 
                 type: INTEGER({
                     references: {
-                        model: 'Volume', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'Volume', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
+                    allowNull: true,
+                }),
 
             },
-            uid: { //数组外键,用于查评论表
+            uid: { // 数组外键,用于查评论表
                 type: INTEGER({
 
                     references: {
-                        model: 'User', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'User', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
-            }
+                    allowNull: true,
+                }),
+            },
         });
         await queryInterface.createTable('collectionVolume', {
             id: {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
             },
-            vid: { //数组外键,用于查评论表
+            vid: { // 数组外键,用于查评论表
                 type: INTEGER({
                     references: {
-                        model: 'Volume', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'Volume', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
+                    allowNull: true,
+                }),
 
             },
-            uid: { //数组外键,用于查评论表
+            uid: { // 数组外键,用于查评论表
                 type: INTEGER({
                     references: {
-                        model: 'User', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'User', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
+                    allowNull: true,
+                }),
             },
-            createAt: DATE,
-            updateAt: DATE
+            created_at: DATE,
+            updated_at: DATE,
         });
         await queryInterface.createTable('scoreVolume', {
             id: {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
-                autoIncrement: true
+                autoIncrement: true,
             },
             sid: {
                 type: INTEGER(20),
                 allowNull: false,
                 primaryKey: true,
             },
-            vid: { //数组外键,用于查评论表
+            vid: { // 数组外键,用于查评论表
                 type: INTEGER({
 
                     references: {
-                        model: 'Volume', //对应外键表
-                        key: 'id', //对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+                        model: 'Volume', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
                     },
-                    allowNull: true
-                })
-            }
+                    allowNull: true,
+                }),
+            },
         });
         /*
-          Add altering commands here.
-          Return a promise to correctly handle asynchronicity.
+                  Add altering commands here.
+                  Return a promise to correctly handle asynchronicity.
 
-          Example:
-          return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-        */
+                  Example:
+                  return queryInterface.createTable('users', { id: Sequelize.INTEGER });
+                */
     },
 
-    async down(queryInterface, Sequelize) {
+    async down(queryInterface) {
         await queryInterface.dropTable('scoreVolume');
         await queryInterface.dropTable('collectionVolume');
         await queryInterface.dropTable('ownVolume');
@@ -218,11 +223,11 @@ module.exports = {
         await queryInterface.dropTable('User');
 
         /*
-          Add reverting commands here.
-          Return a promise to correctly handle asynchronicity.
+                  Add reverting commands here.
+                  Return a promise to correctly handle asynchronicity.
 
-          Example:
-          return queryInterface.dropTable('users');
-        */
-    }
+                  Example:
+                  return queryInterface.dropTable('users');
+                */
+    },
 };

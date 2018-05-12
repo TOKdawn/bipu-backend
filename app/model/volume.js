@@ -7,7 +7,7 @@ module.exports = app => {
         STRING,
         INTEGER,
         ARRAY,
-        DATE
+        DATE,
     } = app.Sequelize;
 
     const VolumeModel = app.model.define('Volume', {
@@ -15,7 +15,7 @@ module.exports = app => {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         photo: {
             type: STRING(200),
@@ -31,7 +31,7 @@ module.exports = app => {
             allowNull: true,
             defaultValue: 'undefined',
         },
-        status: { //-1已删除 0不可编辑 1可编辑 2回收站
+        status: { // -1已删除 0不可编辑 1可编辑 2回收站
             type: INTEGER(5),
             allowNull: false,
             defaultValue: 1,
@@ -41,19 +41,19 @@ module.exports = app => {
             allowNull: true,
             defaultValue: null,
         },
-        createAt: {
+        created_at: {
             type: DATE,
             allowNull: true,
         },
-        updateAt: {
+        updated_at: {
             type: DATE,
             allowNull: true,
-        }
+        },
     }, {
-        createAt: 'createAt',
-        updateAt: 'updateAt',
-        timestamps: false, //时间戳
-        tableName: 'Volume' // 设置表名
+        createAt: 'created_at',
+        updateAt: 'updated_at',
+        timestamps: true, // 时间戳
+        tableName: 'Volume', // 设置表名
     });
 
     return VolumeModel;
