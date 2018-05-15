@@ -1,4 +1,5 @@
-// 谱册表
+//  评论表
+
 
 'use strict';
 
@@ -7,28 +8,31 @@ module.exports = app => {
         STRING,
         INTEGER,
         ARRAY,
-        DATE,
+        DATE
     } = app.Sequelize;
 
-    const VolumeModel = app.model.define('Volume', {
+    const SubCommentModel = app.model.define('SubComment', {
         id: {
             type: INTEGER(20),
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        photo: {
-            type: STRING(200),
-            allowNull: true,
-        },
-        title: {
-            type: STRING(50),
+        comment_id: {
+            type: INTEGER(20),
             allowNull: false,
-            defaultValue: 'undefined',
         },
-        describe: {
-            type: STRING(300),
+        targetid: {
+            type: INTEGER(20),
             allowNull: true,
+        },
+        uid: {
+            type: INTEGER(20),
+            allowNull: false,
+        },
+        text: {
+            type: STRING(300),
+            allowNull: false,
             defaultValue: 'undefined',
         },
         status: { // -1已删除 0不可编辑 1可编辑 2回收站
@@ -44,12 +48,13 @@ module.exports = app => {
             type: DATE,
             allowNull: true,
         },
+
     }, {
         createAt: 'created_at',
         updateAt: 'updated_at',
-        timestamps: true, // 时间戳
-        tableName: 'Volume', // 设置表名
+
+        tableName: 'subComment', // 设置表名
     });
 
-    return VolumeModel;
+    return SubCommentModel;
 };

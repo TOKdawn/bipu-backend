@@ -49,6 +49,10 @@ module.exports = {
                 primaryKey: true,
                 autoIncrement: true,
             },
+            volume_id: {
+                type: INTEGER(20),
+                allowNull: false,
+            },
             uid: {
                 type: INTEGER(20),
                 allowNull: false,
@@ -62,18 +66,6 @@ module.exports = {
                 type: INTEGER(5),
                 allowNull: false,
                 defaultValue: 1,
-            },
-            subComment: { // 数组外键,用于查评论表
-                type: ARRAY({
-                    type: INTEGER,
-                    references: {
-                        model: 'Comment', // 对应外键表
-                        key: 'id', // 对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
-                    },
-                    allowNull: true,
-                }),
-
             },
             created_at: DATE,
             updated_at: DATE,
@@ -103,18 +95,6 @@ module.exports = {
                 type: INTEGER(5),
                 allowNull: false,
                 defaultValue: 1,
-            },
-            comment: { // 数组外键,用于查评论表
-                type: ARRAY({
-                    type: INTEGER,
-                    references: {
-                        model: 'Comment', // 对应外键表
-                        key: 'id', // 对应字段
-                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
-                    },
-                    allowNull: true,
-                }),
-
             },
             created_at: DATE,
             updated_at: DATE,
@@ -205,6 +185,49 @@ module.exports = {
                 }),
             },
         });
+        await queryInterface.createTable('subComment', {
+            id: {
+                type: INTEGER(20),
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            comment_id: {
+                type: INTEGER(20),
+                allowNull: false,
+            },
+            targetid: {
+                type: INTEGER(20),
+                allowNull: true,
+            },
+            uid: {
+                type: INTEGER(20),
+                allowNull: false,
+            },
+            text: {
+                type: STRING(300),
+                allowNull: false,
+                defaultValue: 'undefined',
+            },
+            status: { // -1已删除 0不可编辑 1可编辑 2回收站
+                type: INTEGER(5),
+                allowNull: false,
+                defaultValue: 1,
+            },
+            created_at: {
+                type: DATE,
+                allowNull: true,
+            },
+            updated_at: {
+                type: DATE,
+                allowNull: true,
+            },
+
+        }, {
+            createAt: 'created_at',
+            updateAt: 'updated_at',
+
+        });
         /*
                   Add altering commands here.
                   Return a promise to correctly handle asynchronicity.
@@ -221,6 +244,7 @@ module.exports = {
         await queryInterface.dropTable('Volume');
         await queryInterface.dropTable('Comment');
         await queryInterface.dropTable('User');
+        await queryInterface.dropTable('subComment');
 
         /*
                   Add reverting commands here.

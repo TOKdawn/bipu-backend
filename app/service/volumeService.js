@@ -11,6 +11,7 @@ class VolumeService extends Service {
         this.Comment = this.ctx.model.Comment;
         this.OwnVolume = this.ctx.model.OwnVolume;
         this.SoreVolume = this.ctx.model.SoreVolume;
+        this.SubComment = this.ctx.model.SubComment;
     }
     async createVolume(title, describe, uid) {
         // console.log(this.app.model.sequelize)
@@ -117,91 +118,67 @@ class VolumeService extends Service {
         }
         return result;
     }
-    async addCommentToComment(id, text, uid) {
-
-        const t = await this.ctx.model.transaction();
-        try {
-            const createComment = await this.Comment.create({
-                uid,
-                text,
-            });
-            console.log(createComment);
-            const append = await this.Comment.update({
-                subComment: this.ctx.model.fn('array_append', this.ctx.model.col('subComment'), createComment.get('id')),
-
-            }, {
-                where: {
-                    id,
-                },
-            });
-
-            await t.commit();
-            return append;
-        } catch (err) {
-            await t.rollback();
-            return err;
-        }
+    async addCommentToComment(id, text, uid, targetid) {
+        const data = await this.SubComment.create({
+            targetid,
+            uid,
+            text,
+            comment_id: id
+        });
+        return data;
 
 
     }
     async addCommentToVolume(id, text, uid) {
-        const t = await this.ctx.model.transaction();
-        try {
-            console.log(uid, id, text)
-            const createComment = await this.Comment.create({
-                uid,
-                text,
-            });
-            console.log(createComment);
-            const append = await this.Volume.update({
-                comment: this.ctx.model.fn('array_append', this.ctx.model.col('comment'), createComment.get('id')),
 
-            }, {
-                where: {
-                    id,
-                },
-            });
-            await t.commit();
-            return append;
-        } catch (err) {
-            await t.rollback();
-            return err;
-        }
+        console.log(uid, id, text)
+        const data = await this.Comment.create({
+            volume_id: id,
+            uid,
+            text,
+        });
+        return data;
+
+
     }
     async getComment(vid) {
-        // this.Comment.hasMany(this.Comment, { foreignKey: 'id', sourceKey: 'subComment' })
-        // const t = await this.ctx.model.transaction();
-        // const Op = this.app.Sequelize.Op
-        // try {
-        const comments = await this.Volume.findOne({
+        this.Volume.hasMany(this.Comment);
+        this.Comment.hasMany(this.SubComment)
+        const data = await this.Volume.findOne({
+            include: [{
+                model: this.Comment,
+                all: true,
+                require: false,
+                include: {
+                    model: this.SubComment,
+                    all: true,
+                    require: false
+                }
+            }],
             where: {
                 id: vid
-            },
-            attributes: ['comment']
+            }
         })
-        console.log(comments.get('comment'))
-            // this.Comment.hasMany(this.Comment, { foreignKey: 'subComment', sourceKey: 'id' })
-        this.Comment.belongsTo(this.Comment, { foreignKey: 'subComment', sourceKey: 'id', as: 'children' })
-        const data = await this.Comment.findAll({
-                include: {
-                    model: this.Comment,
-                    all: true
-                },
-                where: {
-                    id: {
-                        $in: comments.get('comment')
-                    }
-                }
-            })
-            // await t.commit();
         return data;
-        // } catch (err) {
-        //     await t.rollback();
-        //     return err;
-        // }
-
     }
-
+    async delectComment(cid) {
+        await this.Comment.update({
+            status: 2,
+        }, {
+            where: {
+                id: cid,
+            },
+        });
+    }
+    async delectSubcomment(cid) {
+        await this.SubComment.update({
+            status: 2,
+        }, {
+            where: {
+                id: cid,
+            },
+        });
+    }
 }
 
 module.exports = VolumeService;

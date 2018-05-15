@@ -359,8 +359,31 @@
         "pattern": "[^\\/]+?"
       }
     ],
-    "path": "/volume/comment/:cid",
-    "regexp": "/^\\/volume\\/comment\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
+    "path": "/comment/:cid",
+    "regexp": "/^\\/comment\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "DELETE"
+    ],
+    "paramNames": [
+      {
+        "name": "cid",
+        "prefix": "/",
+        "delimiter": "/",
+        "optional": false,
+        "repeat": false,
+        "partial": false,
+        "asterisk": false,
+        "pattern": "[^\\/]+?"
+      }
+    ],
+    "path": "/subcomment/:cid",
+    "regexp": "/^\\/subcomment\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

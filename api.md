@@ -295,9 +295,10 @@
 
     删除评论
 
-    `DELETE /volume/:vid/comment/:cid `
+    `DELETE /comment/:cid `
 
-    
+    删除子评论
+    `DELETE /subcomment/:cid `
 <!-- ### collection（收藏的谱册）
 
 1. List volumes in one's collection

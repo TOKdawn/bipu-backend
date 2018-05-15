@@ -19,6 +19,10 @@ module.exports = app => {
             primaryKey: true,
             autoIncrement: true,
         },
+        volume_id: {
+            type: INTEGER(20),
+            allowNull: false,
+        },
         uid: {
             type: INTEGER(20),
             allowNull: false,
@@ -27,17 +31,6 @@ module.exports = app => {
             type: STRING(300),
             allowNull: false,
             defaultValue: 'undefined',
-        },
-        subComment: {
-            type: ARRAY({
-                type: INTEGER,
-                references: {
-                    model: 'Comment', // 对应外键表
-                    key: 'id', // 对应字段
-                    deferrable: Deferrable.INITIALLY_IMMEDIATE,
-                },
-                allowNull: true,
-            }),
         },
         status: { // -1已删除 0不可编辑 1可编辑 2回收站
             type: INTEGER(5),
