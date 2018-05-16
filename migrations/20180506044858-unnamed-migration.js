@@ -33,7 +33,7 @@ module.exports = {
                 allowNull: true,
                 defaultValue: 'undefined',
             },
-            role: { // -1已删除 0不可编辑 1可编辑 2回收站
+            role: { //
                 type: INTEGER(5),
                 allowNull: false,
                 defaultValue: 1,
@@ -221,6 +221,38 @@ module.exports = {
             updated_at: {
                 type: DATE,
                 allowNull: true,
+            },
+
+        }, {
+            createAt: 'created_at',
+            updateAt: 'updated_at',
+
+        });
+        await queryInterface.createTable('Authorization', {
+            id: {
+                type: INTEGER(20),
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            provider: { //第三方
+                type: STRING(20),
+                allowNull: false,
+
+            },
+            token: {
+                type: STRING(200),
+                allowNull: false,
+            },
+            uid: { // 数组外键,用于查评论表
+                type: INTEGER({
+                    references: {
+                        model: 'User', // 对应外键表
+                        key: 'id', // 对应字段
+                        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
+                    },
+                    allowNull: false,
+                }),
             },
 
         }, {

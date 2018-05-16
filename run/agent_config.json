@@ -159,6 +159,11 @@
         "timeout": "10s"
       }
     },
+    "passportGithub": {
+      "key": "f6fce18e5524663f25f8",
+      "secret": "<String len: 40>",
+      "callbackURL": "http://127.0.0.1:7001/passport/github/callback"
+    },
     "env": "local",
     "name": "bipu",
     "keys": "<String len: 23>",
@@ -174,8 +179,12 @@
       "dependencies": {
         "egg": "^2.2.1",
         "egg-oss": "^1.1.0",
+        "egg-passport": "^2.0.1",
+        "egg-passport-github": "^1.0.0",
+        "egg-passport-weibo": "^1.0.0",
         "egg-scripts": "^2.5.0",
         "egg-sequelize": "^3.1.4",
+        "egg-userrole": "^2.0.0",
         "pg": "^7.4.2",
         "pg-hstore": "^2.3.2",
         "stream-wormhole": "^1.0.3"
@@ -485,6 +494,32 @@
       "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
       "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-oss@1.1.0@egg-oss",
       "version": "1.1.0"
+    },
+    "passport": {
+      "enable": true,
+      "package": "egg-passport",
+      "name": "passport",
+      "dependencies": [
+        "session"
+      ],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
+      "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-passport@2.0.1@egg-passport",
+      "version": "2.0.1"
+    },
+    "passportGithub": {
+      "enable": true,
+      "package": "egg-passport-github",
+      "name": "passportGithub",
+      "dependencies": [
+        "passport"
+      ],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
+      "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-passport-github@1.0.0@egg-passport-github",
+      "version": "1.0.0"
     }
   }
 }

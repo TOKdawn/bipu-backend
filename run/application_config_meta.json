@@ -83,6 +83,11 @@
       "timeout": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-oss@1.1.0@egg-oss/config/config.default.js"
     }
   },
+  "passportGithub": {
+    "key": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "secret": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "callbackURL": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
+  },
   "keys": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "middleware": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "session": {
@@ -168,8 +173,12 @@
     "dependencies": {
       "egg": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-oss": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-passport": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-passport-github": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-passport-weibo": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-scripts": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-sequelize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-userrole": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "pg": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "pg-hstore": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "stream-wormhole": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js"

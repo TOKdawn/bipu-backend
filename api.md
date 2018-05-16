@@ -1,4 +1,15 @@
 ### users （用户）
+1. login
+    登录(github)
+
+    `get /passport/github`
+
+   
+  
+    
+
+
+
 
 1. Get an user information（需验证）
 
@@ -16,8 +27,6 @@
     | name       | srting  |  用户名   |
     | role       | number  |  用户角色 |
    
-
-
 
 
 
