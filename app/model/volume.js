@@ -36,6 +36,11 @@ module.exports = app => {
             allowNull: false,
             defaultValue: 1,
         },
+        visits: {
+            type: INTEGER(10),
+            allowNull: false,
+            defaultValue: 0
+        },
         created_at: {
             type: DATE,
             allowNull: true,

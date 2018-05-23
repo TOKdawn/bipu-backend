@@ -91,6 +91,11 @@ module.exports = {
                 allowNull: true,
                 defaultValue: 'undefined',
             },
+            visits: {
+                type: INTEGER(10),
+                allowNull: false,
+                defaultValue: 0
+            },
             status: { // -1已删除 0不可编辑 1可编辑 2回收站
                 type: INTEGER(5),
                 allowNull: false,

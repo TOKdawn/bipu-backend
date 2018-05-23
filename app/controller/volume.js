@@ -15,9 +15,10 @@ class VolumeController extends Controller {
 
 
     async getVolumeList() {
-        const { uid } = this.ctx.params;
+
         const { offset = DEFAULTOFFSET, pagesize = DEFAULTVOLUMEPAGESIZE, role = 'normal' } = this.ctx.query;
-        const response = await this.VolumeService.getVolumeList(uid, offset, pagesize, role);
+
+        const response = await this.VolumeService.getVolumeList(offset, pagesize, role);
         this.ctx.body = response;
     }
 
@@ -75,9 +76,11 @@ class VolumeController extends Controller {
     async getVolumeScore() {
         const { vid } = this.ctx.params;
         const { offset = DEFAULTOFFSET, pagesize = DEFAULTSCOREPAGESIZE } = this.ctx.query;
+
         const response = await this.VolumeService.getVolumeScore(vid, offset, pagesize);
         // console.log(response)
         this.ctx.body = response;
+
 
 
     }

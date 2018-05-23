@@ -101,6 +101,7 @@ class VolumeService extends Service {
     }
 
     async getVolumeScore(vid, offset, pagesize) {
+        await this.Volume.increment(['visits'], { by: 1, where: { id: vid } })
         const data = await this.SoreVolume.findAll({
             // attributes: ['vid', 'uid'],
             where: {
@@ -131,7 +132,7 @@ class VolumeService extends Service {
     }
     async addCommentToVolume(id, text, uid) {
 
-        console.log(uid, id, text)
+        // console.log(uid, id, text)
         const data = await this.Comment.create({
             volume_id: id,
             uid,
@@ -139,6 +140,21 @@ class VolumeService extends Service {
         });
         return data;
 
+
+    }
+    async getVolumeList(offset, pagesize, role) {
+        // console.log(role)
+        if (role == 'normal'); //目前只有常规查询;
+
+        const data = await this.Volume.findAll({
+            // attributes: ['vid', 'uid'],
+            order: [
+                'visits'
+            ],
+            limit: pagesize,
+            offset,
+        });
+        return data;
 
     }
     async getComment(vid) {
