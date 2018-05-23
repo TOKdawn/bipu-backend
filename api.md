@@ -26,8 +26,9 @@
     | avatar     | string  |  用户头像 |
     | name       | srting  |  用户名   |
     | role       | number  |  用户角色 |
+    //1登录 ,0未登录,2管理员
    
-
+ 
 
 
 1. List volumes in one's collection

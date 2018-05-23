@@ -88,14 +88,14 @@
     "secret": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
     "callbackURL": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
   },
+  "session": {
+    "key": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "maxAge": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "httpOnly": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "encrypt": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
+  },
   "keys": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "middleware": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
-  "session": {
-    "maxAge": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js",
-    "key": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js",
-    "httpOnly": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js",
-    "encrypt": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-session@3.1.0@egg-session/config/config.default.js"
-  },
   "helper": {
     "shtml": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-security@2.2.2@egg-security/config/config.default.js"
   },

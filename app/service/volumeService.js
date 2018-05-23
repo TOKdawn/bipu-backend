@@ -21,7 +21,7 @@ class VolumeService extends Service {
                 title,
                 describe,
             });
-            console.log(data.get('id'));
+            // console.log(data.get('id'));
             await this.OwnVolume.create({
                 uid,
                 vid: data.get('id'),
@@ -178,6 +178,14 @@ class VolumeService extends Service {
                 id: cid,
             },
         });
+    }
+    async findOwner(vid) {
+        const data = await this.OwnVolume.findOne({
+            where: {
+                vid
+            }
+        })
+        return data;
     }
 }
 

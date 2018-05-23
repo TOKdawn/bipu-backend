@@ -10,7 +10,7 @@ class VolumeController extends Controller {
     constructor(ctx) {
         super(ctx);
         this.VolumeService = ctx.service.volumeService;
-        this.ctx.session.uid = 123; // 测试用
+        // this.ctx.session.uid = 123; // 测试用
     }
 
 
@@ -28,7 +28,7 @@ class VolumeController extends Controller {
         } = this.ctx.request.body;
         const {
             uid,
-        } = this.ctx.session;
+        } = this.ctx.user.id;
         const response = await this.VolumeService.createVolume(title, describe, uid);
         this.ctx.body = response;
     }
@@ -41,6 +41,10 @@ class VolumeController extends Controller {
 
         } = this.ctx.request.body;
         const { vid } = this.ctx.params;
+        const volume = await this.VolumeService.findOwner(vid);
+        if (volume.get(uid) !== this.ctx.user.id) {
+            this.ctx.helper.createRes(403, 'permission denied ಠ益ಠ');
+        }
         const response = await this.VolumeService.editVolume(vid, title, describe, url);
         this.ctx.body = response;
     }
@@ -49,7 +53,7 @@ class VolumeController extends Controller {
         const { vid } = this.ctx.params;
         const {
             uid,
-        } = this.ctx.session;
+        } = this.ctx.user.id;
 
         const response = await this.VolumeService.deleteVolume(vid, uid);
         if (response) {
@@ -85,11 +89,19 @@ class VolumeController extends Controller {
         const {
             vid,
         } = this.ctx.params;
+        const volume = await this.VolumeService.findOwner(vid);
+        if (volume.get(uid) !== this.ctx.user.id) {
+            this.ctx.helper.createRes(403, 'permission denied ಠ益ಠ');
+        }
         const response = await this.VolumeService.addVolumeScore(vid, sid);
         this.ctx.body = response;
     }
     async deleteVolumeScore() {
         const { vid, sid } = this.ctx.params;
+        const volume = await this.VolumeService.findOwner(vid);
+        if (volume.get(uid) !== this.ctx.user.id) {
+            this.ctx.helper.createRes(403, 'permission denied ಠ益ಠ');
+        }
         const response = await this.VolumeService.deleteVolumeScore(vid, sid);
         this.ctx.body = response;
     }
@@ -112,7 +124,7 @@ class VolumeController extends Controller {
         } = this.ctx.request.body;
         const {
             uid,
-        } = this.ctx.session;
+        } = this.ctx.user.id;
         let response;
         if (replyid) {
             response = await this.VolumeService.addCommentToComment(replyid, text, uid, targetid);

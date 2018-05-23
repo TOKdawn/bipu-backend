@@ -39,6 +39,12 @@ module.exports = appInfo => {
             secret: 'ad54a7a8e09f61b78bce31996335ceb3d58e7bf0',
             callbackURL: 'http://127.0.0.1:7001/passport/github/callback',
             // proxy: false,
+        },
+        session: {
+            key: 'EGG_SESS',
+            maxAge: 24 * 3600 * 1000, // 1 天
+            httpOnly: true,
+            encrypt: true,
         }
 
     };

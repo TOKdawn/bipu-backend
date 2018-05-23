@@ -20,32 +20,42 @@ module.exports = app => {
                 provider: user.provider
             }
         });
-
-        const existsUser = await ctx.model.User.findOne({
-            where: {
-                id: auth.get('uid')
-            }
-        });
+        let existsUser = {}
+        if (auth) {
+            existsUser = await ctx.model.User.findOne({
+                where: {
+                    id: auth.get('uid')
+                }
+            });
+        }
 
         if (existsUser) {
+
             return existsUser;
         }
         // 调用 service 注册新用户
         const newUser = await ctx.service.userService.register(user);
+
         return newUser;
     });
 
     // 将用户信息序列化后存进 session 里面，一般需要精简，只保存个别字段
     app.passport.serializeUser(async(ctx, user) => {
         // 处理 user
-        // ...
-        // return user;
+        //sett方法
+        let temp = {
+            id: user.get('id'),
+            name: user.get('name'),
+            role: user.get('role')
+        }
+        return temp;
     });
 
     // 反序列化后把用户信息从 session 中取出来，反查数据库拿到完整信息
     app.passport.deserializeUser(async(ctx, user) => {
         // 处理 user
         // ...
-        // return user;
+        //gett方法
+        return user;
     });
 };
