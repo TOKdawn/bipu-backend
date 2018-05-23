@@ -8,18 +8,18 @@ module.exports = app => {
     } = app.Sequelize;
     const ownVolumeModel = app.model.define('ownVolume', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         vid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
 
         },
         uid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
     }, {

@@ -12,7 +12,7 @@ module.exports = app => {
 
     const VolumeModel = app.model.define('Volume', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -32,12 +32,12 @@ module.exports = app => {
             defaultValue: 'undefined',
         },
         status: { // -1已删除 0不可编辑 1可编辑 2回收站
-            type: INTEGER(5),
+            type: INTEGER,
             allowNull: false,
             defaultValue: 1,
         },
         visits: {
-            type: INTEGER(10),
+            type: INTEGER,
             allowNull: false,
             defaultValue: 0
         },

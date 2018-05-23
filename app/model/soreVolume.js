@@ -10,18 +10,18 @@ module.exports = app => {
     } = app.Sequelize;
     const scoreVolumeModel = app.model.define('scoreVolume', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         vid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
 
         },
         sid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
 

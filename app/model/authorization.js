@@ -9,7 +9,7 @@ module.exports = app => {
     } = app.Sequelize;
     const authorizationModel = app.model.define('Authorization', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -24,7 +24,7 @@ module.exports = app => {
             allowNull: false,
         },
         uid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         }
     }, {

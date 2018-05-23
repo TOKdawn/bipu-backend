@@ -13,21 +13,21 @@ module.exports = app => {
 
     const SubCommentModel = app.model.define('SubComment', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         comment_id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
         targetid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: true,
         },
         uid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
         text: {
@@ -36,7 +36,7 @@ module.exports = app => {
             defaultValue: 'undefined',
         },
         status: { // -1已删除 0不可编辑 1可编辑 2回收站
-            type: INTEGER(5),
+            type: INTEGER,
             allowNull: false,
             defaultValue: 1,
         },

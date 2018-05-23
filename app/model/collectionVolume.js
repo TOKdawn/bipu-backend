@@ -8,18 +8,18 @@ module.exports = app => {
     } = app.Sequelize;
     const collectionVolumeModel = app.model.define('collectionVolume', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         vid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
 
         },
         uid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
 

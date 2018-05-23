@@ -14,7 +14,7 @@ module.exports = {
         } = Sequelize;
         await queryInterface.createTable('User', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
@@ -34,7 +34,7 @@ module.exports = {
                 defaultValue: 'undefined',
             },
             role: { //
-                type: INTEGER(5),
+                type: INTEGER,
                 allowNull: false,
                 defaultValue: 1,
             },
@@ -44,17 +44,17 @@ module.exports = {
 
         await queryInterface.createTable('Comment', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
             },
             volume_id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
             },
             uid: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
             },
             text: {
@@ -63,7 +63,7 @@ module.exports = {
                 defaultValue: 'undefined',
             },
             status: { // -1已删除 0不可编辑 1可编辑 2回收站
-                type: INTEGER(5),
+                type: INTEGER,
                 allowNull: false,
                 defaultValue: 1,
             },
@@ -72,7 +72,7 @@ module.exports = {
         });
         await queryInterface.createTable('Volume', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
@@ -92,12 +92,12 @@ module.exports = {
                 defaultValue: 'undefined',
             },
             visits: {
-                type: INTEGER(10),
+                type: INTEGER,
                 allowNull: false,
                 defaultValue: 0
             },
             status: { // -1已删除 0不可编辑 1可编辑 2回收站
-                type: INTEGER(5),
+                type: INTEGER,
                 allowNull: false,
                 defaultValue: 1,
             },
@@ -106,7 +106,7 @@ module.exports = {
         });
         await queryInterface.createTable('ownVolume', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
@@ -137,7 +137,7 @@ module.exports = {
         });
         await queryInterface.createTable('collectionVolume', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
@@ -168,13 +168,13 @@ module.exports = {
         });
         await queryInterface.createTable('scoreVolume', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
             },
             sid: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
             },
@@ -192,21 +192,21 @@ module.exports = {
         });
         await queryInterface.createTable('subComment', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
             },
             comment_id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
             },
             targetid: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: true,
             },
             uid: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
             },
             text: {
@@ -215,7 +215,7 @@ module.exports = {
                 defaultValue: 'undefined',
             },
             status: { // -1已删除 0不可编辑 1可编辑 2回收站
-                type: INTEGER(5),
+                type: INTEGER,
                 allowNull: false,
                 defaultValue: 1,
             },
@@ -235,7 +235,7 @@ module.exports = {
         });
         await queryInterface.createTable('Authorization', {
             id: {
-                type: INTEGER(20),
+                type: INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,

@@ -14,17 +14,17 @@ module.exports = app => {
 
     const CommentModel = app.model.define('Comment', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
         volume_id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
         uid: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
         },
         text: {
@@ -33,7 +33,7 @@ module.exports = app => {
             defaultValue: 'undefined',
         },
         status: { // -1已删除 0不可编辑 1可编辑 2回收站
-            type: INTEGER(5),
+            type: INTEGER,
             allowNull: false,
             defaultValue: 1,
         },

@@ -12,7 +12,7 @@ module.exports = app => {
     } = app.Sequelize;
     const UserModel = app.model.define('User', {
         id: {
-            type: INTEGER(20),
+            type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -32,7 +32,7 @@ module.exports = app => {
             defaultValue: 'undefined',
         },
         role: { //
-            type: INTEGER(5),
+            type: INTEGER,
             allowNull: false,
             defaultValue: 1, //1登录 ,0未登录,2管理员
         },
