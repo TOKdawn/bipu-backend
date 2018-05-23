@@ -36,3 +36,28 @@
 * 我们会定期挑选优质谱册在首页展示,让你的劳动成果被更多人看到,你也能在谱册页中观看到收藏此谱册的用户,被人认可的感觉是极好的.
 
 
+### 应用部署
+
+    node >=8.9.0
+
+    install node
+    npm i n -g
+    n stable
+
+    yum install postgresql
+    yum install postgresql-server
+    postgresql-setup initdb
+    systemctl start postgresql
+    
+    sudo adduser dawn
+    sudo su - postgres
+    psql
+    \password postgres
+    CREATE DATABASE bipu OWNER dawn;
+    GRANT ALL PRIVILEGES ON DATABASE bipu to dawn;
+    systemctl restart postgresql.service
+
+
+vim /var/lib/pgsql/data/pg_hba.conf
+local all all trust
+host all  all 127.0.0.1/32 trust
