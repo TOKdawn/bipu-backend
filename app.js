@@ -30,7 +30,6 @@ module.exports = app => {
         }
 
         if (existsUser) {
-
             return existsUser;
         }
         // 调用 service 注册新用户

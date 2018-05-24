@@ -16,7 +16,10 @@ module.exports.passportGithub = {
     enable: true,
     package: 'egg-passport-github',
 };
-
+exports.cors = {
+    enable: true,
+    package: 'egg-cors',
+};
 // module.exports.passportWeibo = {
 //     enable: true,
 //     package: 'egg-passport-weibo',

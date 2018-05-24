@@ -40,6 +40,10 @@ module.exports = appInfo => {
             callbackURL: 'http://127.0.0.1:7001/passport/github/callback',
             // proxy: false,
         },
+        cors: {
+            origin: '*',
+            allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+        },
         session: {
             key: 'EGG_SESS',
             maxAge: 24 * 3600 * 1000, // 1 天

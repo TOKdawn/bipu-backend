@@ -27,7 +27,8 @@
     | name       | srting  |  用户名   |
     | role       | number  |  用户角色 |
     //1登录 ,0未登录,2管理员
-   
+    获取用户自己的信息
+   ` GET  /user`
  
 
 

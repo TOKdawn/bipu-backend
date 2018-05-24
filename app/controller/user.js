@@ -11,6 +11,19 @@ class UserController extends Controller {
         this.userService = ctx.service.userService;
         // this.ctx.session.uid = 123; // 测试用
     }
+    async getMyInfo() {
+        const {
+            uid
+        } = this.ctx.user.id;
+        uid || this.ctx.helper.createRes(403, 'User not login QAQ');
+        const response = await this.userService.getInfo(uid);
+        if (response) {
+            this.ctx.body = response;
+        } else {
+            this.ctx.helper.createRes(404, 'User is not found QAQ');
+
+        }
+    }
 
     async getInfo() {
         const { uid } = this.ctx.params; // 等价于 const uid = this.ctx.params.uid;
@@ -48,7 +61,10 @@ class UserController extends Controller {
         const response = await this.userService.getUserCollection(uid, offset, pagesize, owned);
         this.ctx.body = response;
     }
-
+    async getLogout() {
+        this.ctx.logout();
+        this.ctx.body = 'success';
+    }
     async addCollectionVolume() {
         const {
             vid,
