@@ -88,6 +88,10 @@
     "secret": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
     "callbackURL": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
   },
+  "cors": {
+    "origin": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "allowMethods": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
+  },
   "session": {
     "key": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
     "maxAge": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
@@ -172,6 +176,7 @@
     "private": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
     "dependencies": {
       "egg": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-cors": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-oss": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-passport": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-passport-github": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",

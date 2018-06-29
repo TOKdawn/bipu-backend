@@ -103,6 +103,7 @@
         "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-oss@1.1.0@egg-oss/config/locales",
         "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-passport@2.0.1@egg-passport/config/locales",
         "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-passport-github@1.0.0@egg-passport-github/config/locales",
+        "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-cors@2.0.0@egg-cors/config/locales",
         "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/locales",
         "/Users/dawn/GitHub/bipu-backend/config/locales"
       ],
@@ -205,6 +206,10 @@
         "User-Agent": "passport-github"
       }
     },
+    "cors": {
+      "origin": "*",
+      "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH"
+    },
     "env": "local",
     "name": "bipu",
     "keys": "<String len: 23>",
@@ -219,6 +224,7 @@
       "private": true,
       "dependencies": {
         "egg": "^2.2.1",
+        "egg-cors": "^2.0.0",
         "egg-oss": "^1.1.0",
         "egg-passport": "^2.0.1",
         "egg-passport-github": "^1.0.0",
@@ -346,6 +352,7 @@
       "logging": false
     },
     "coreMiddleware": [
+      "cors",
       "meta",
       "siteFile",
       "notfound",
@@ -580,6 +587,17 @@
       "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
       "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-passport-github@1.0.0@egg-passport-github",
       "version": "1.0.0"
+    },
+    "cors": {
+      "enable": true,
+      "package": "egg-cors",
+      "name": "cors",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
+      "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-cors@2.0.0@egg-cors",
+      "version": "2.0.0"
     }
   }
 }

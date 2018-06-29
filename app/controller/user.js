@@ -9,7 +9,7 @@ class UserController extends Controller {
     constructor(ctx) { // UserController 构造函数;
         super(ctx);
         this.userService = ctx.service.userService;
-        // this.ctx.session.uid = 123; // 测试用
+        this.ctx.session.uid = 123; // 测试用
     }
     async getMyInfo() {
         const {

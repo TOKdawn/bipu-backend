@@ -220,7 +220,7 @@
 
     往一个特定谱册里添加一个谱子
 
-    ` POST  /volume/:vid/score`
+    `POST  /volume/:vid/score`
 
     请求参数
 

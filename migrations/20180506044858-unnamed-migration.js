@@ -12,6 +12,27 @@ module.exports = {
             DATE,
 
         } = Sequelize;
+        await queryInterface.createTable('Score', {
+            id: {
+                type: INTEGER,
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            name: {
+                type: STRING,
+                allowNull: false,
+
+            },
+            sid: {
+                type: INTEGER,
+                allowNull: false,
+            },
+            created_at: DATE,
+            updated_at: DATE,
+
+        });
+
         await queryInterface.createTable('User', {
             id: {
                 type: INTEGER,
@@ -281,6 +302,7 @@ module.exports = {
         await queryInterface.dropTable('Volume');
         await queryInterface.dropTable('Comment');
         await queryInterface.dropTable('User');
+        await queryInterface.dropTable('Score');
         await queryInterface.dropTable('subComment');
 
         /*

@@ -69,12 +69,11 @@ class UserService extends Service {
                 avatar: user.photo,
                 signature: user.profile._json.bio
             });
-            console.log(data);
+            // console.log(data);
             const author = await this.Auhtor.create({
                 uid: data.get('id'),
                 provider: user.provider,
                 token: user.id,
-
             })
             await t.commit();
             return data;

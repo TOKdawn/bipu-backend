@@ -12,12 +12,9 @@ class VolumeController extends Controller {
         this.VolumeService = ctx.service.volumeService;
         // this.ctx.session.uid = 123; // 测试用
     }
-
-
     async getVolumeList() {
 
         const { offset = DEFAULTOFFSET, pagesize = DEFAULTVOLUMEPAGESIZE, role = 'normal' } = this.ctx.query;
-
         const response = await this.VolumeService.getVolumeList(offset, pagesize, role);
         this.ctx.body = response;
     }
@@ -30,6 +27,7 @@ class VolumeController extends Controller {
         const {
             uid,
         } = this.ctx.user.id;
+        // const uid = 123; //测试用
         const response = await this.VolumeService.createVolume(title, describe, uid);
         this.ctx.body = response;
     }
@@ -99,6 +97,7 @@ class VolumeController extends Controller {
         const response = await this.VolumeService.addVolumeScore(vid, sid);
         this.ctx.body = response;
     }
+
     async deleteVolumeScore() {
         const { vid, sid } = this.ctx.params;
         const volume = await this.VolumeService.findOwner(vid);

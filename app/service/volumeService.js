@@ -10,8 +10,9 @@ class VolumeService extends Service {
         this.Volume = this.ctx.model.Volume;
         this.Comment = this.ctx.model.Comment;
         this.OwnVolume = this.ctx.model.OwnVolume;
-        this.SoreVolume = this.ctx.model.SoreVolume;
+        this.ScoreVolume = this.ctx.model.ScoreVolume;
         this.SubComment = this.ctx.model.SubComment;
+        this.Score = this.ctx.model.Score;
     }
     async createVolume(title, describe, uid) {
         // console.log(this.app.model.sequelize)
@@ -73,15 +74,47 @@ class VolumeService extends Service {
         }
     }
     async getVolumeInfo(vid) {
-        const Volume = await this.Volume.findOne({
+        const volume = await this.Volume.findOne({
             where: {
                 id: vid,
             },
         });
-        return Volume;
+        return volume;
     }
     async addVolumeScore(vid, sid) {
-        const data = await this.SoreVolume.findOrCreate({
+        const t = await this.ctx.model.transaction();
+        const score = await this.Score.findOne({
+            where: {
+                sid
+            }
+        });
+        if (score == null) {
+            //如果无缓存
+            try {
+                const scoredata = await this.ctx.helper.getIssue(sid);
+                // console.log('scoredata:', scoredata.title);
+                await this.Score.findOrCreate({
+                    //缓存
+                    where: {
+                        name: scoredata.title,
+                        sid
+                    },
+                });
+                const data = await this.ScoreVolume.findOrCreate({
+                    where: {
+                        sid,
+                        vid,
+                    },
+                });
+                await t.commit();
+                return data;
+            } catch (err) {
+                await t.rollback();
+                return err;
+            }
+        }
+
+        const data = await this.ScoreVolume.findOrCreate({
             where: {
                 sid,
                 vid,
@@ -90,7 +123,7 @@ class VolumeService extends Service {
         return data;
     }
     async deleteVolumeScore(vid, sid) {
-        const data = await this.SoreVolume.destroy({
+        const data = await this.ScoreVolume.destroy({
             where: {
                 vid,
                 sid,
@@ -99,10 +132,14 @@ class VolumeService extends Service {
         // console.log(data);
         return data;
     }
-
     async getVolumeScore(vid, offset, pagesize) {
-        await this.Volume.increment(['visits'], { by: 1, where: { id: vid } })
-        const data = await this.SoreVolume.findAll({
+        await this.Volume.increment(['visits'], {
+            by: 1,
+            where: {
+                id: vid
+            }
+        })
+        const data = await this.ScoreVolume.findAll({
             // attributes: ['vid', 'uid'],
             where: {
                 vid,
@@ -114,9 +151,16 @@ class VolumeService extends Service {
         let tiem;
         const result = [];
         for (tiem in data) {
-            const temp = await this.ctx.helper.getIssue(data[tiem].get('sid'));
-            result.push(temp);
+            // const temp = await this.ctx.helper.getIssue(data[tiem].get('sid'));
+            // result.push(temp); //issues 获取
+            const score = await this.Score.findOne({
+                where: {
+                    sid: data[tiem].get('sid')
+                }
+            });
+            result.push(score);
         }
+
         return result;
     }
     async addCommentToComment(id, text, uid, targetid) {
@@ -145,7 +189,6 @@ class VolumeService extends Service {
     async getVolumeList(offset, pagesize, role) {
         // console.log(role)
         if (role == 'normal'); //目前只有常规查询;
-
         const data = await this.Volume.findAll({
             // attributes: ['vid', 'uid'],
             order: [

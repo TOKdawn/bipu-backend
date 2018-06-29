@@ -1,30 +1,32 @@
-//  用户创建谱册表
+// 谱子信息表
 'use strict';
 
 module.exports = app => {
     const {
+        STRING,
         INTEGER,
     } = app.Sequelize;
-    const ownVolumeModel = app.model.define('ownVolume', {
+    const ScoreModel = app.model.define('Score', {
         id: {
             type: INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        vid: {
+        name: {
+            type: STRING,
+            allowNull: false,
+
+        },
+        sid: {
             type: INTEGER,
             allowNull: false,
         },
-        uid: {
-            type: INTEGER,
-            allowNull: false,
-        },
+
     }, {
         timestamps: false,
-        tableName: 'ownVolume', // 设置表名
-
+        freezeTableName: true, // 默认表名会被加s,此选项强制表名跟model一致
     });
 
-    return ownVolumeModel;
+    return ScoreModel;
 };
