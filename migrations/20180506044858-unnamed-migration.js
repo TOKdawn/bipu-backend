@@ -304,13 +304,13 @@ module.exports = {
         await queryInterface.dropTable('User');
         await queryInterface.dropTable('Score');
         await queryInterface.dropTable('subComment');
+        await queryInterface.dropTable('Authorization')
+            /*
+                      Add reverting commands here.
+                      Return a promise to correctly handle asynchronicity.
 
-        /*
-                  Add reverting commands here.
-                  Return a promise to correctly handle asynchronicity.
-
-                  Example:
-                  return queryInterface.dropTable('users');
-                */
+                      Example:
+                      return queryInterface.dropTable('users');
+                    */
     },
 };

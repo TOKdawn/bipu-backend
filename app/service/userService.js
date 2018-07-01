@@ -79,6 +79,7 @@ class UserService extends Service {
             return data;
         } catch (err) {
             await t.rollback();
+            console.log(err);
             return err;
         }
     }

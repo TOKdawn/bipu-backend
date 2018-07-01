@@ -1,10 +1,12 @@
 // app.js
+
+'use strict';
+
 module.exports = app => {
     app.passport.verify(async(ctx, user) => {
         // 检查用户
-        console.log(user)
-            // assert(user.provider, 'user.provider should exists');
-            // assert(user.id, 'user.id should exists');
+        // assert(user.provider, 'user.provider should exists');
+        // assert(user.id, 'user.id should exists');
 
         // 从数据库中查找用户信息
         //
@@ -28,13 +30,15 @@ module.exports = app => {
                 }
             });
         }
-
-        if (existsUser) {
+        console.log("exist", JSON.stringify(existsUser) == "{}");
+        if (!(JSON.stringify(existsUser) == "{}")) {
+            console.log("success")
             return existsUser;
         }
+        console.log("faiture")
+
         // 调用 service 注册新用户
         const newUser = await ctx.service.userService.register(user);
-
         return newUser;
     });
 
@@ -42,11 +46,11 @@ module.exports = app => {
     app.passport.serializeUser(async(ctx, user) => {
         // 处理 user
         //sett方法
-        let temp = {
+        let temp = user ? {
             id: user.get('id'),
             name: user.get('name'),
             role: user.get('role')
-        }
+        } : {};
         return temp;
     });
 
