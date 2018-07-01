@@ -4,12 +4,11 @@
 
     `get /passport/github`
 
-   
-  
-    
+1. logout
+ 
+    注销
 
-
-
+    `get /user/logout`
 
 1. Get an user information（需验证）
 
@@ -89,7 +88,7 @@
 3. Delete a volume from a collection （需验证）
 
     取消收藏某个谱册
-    ` DELETE   /user/collection`
+    ` DELETE   /user/collection/:vid`
 
 ### volumes （谱册）
 
@@ -136,7 +135,7 @@
 
     | 参数        | 类型    |  描述    |
     | --------   | -----:  | :----:  |
-    | name       | string    |  谱册名   |
+    | title       | string    |  谱册名   |
     | describe   | string    |  描述   |
     
     

@@ -8,7 +8,7 @@ module.exports = app => {
 
     router.get('/', controller.home.index);
     router.get('/user', controller.user.getMyInfo);
-    router.get('user/logout', controller.user.getLogout);
+    router.get('/user/logout', controller.user.logout);
     router.get('/user/collection/', controller.user.getMyCollection); //用户权限
     router.get('/user/:uid', controller.user.getInfo);
     router.get('/user/collection/:uid', controller.user.getUserCollection); //用户权限

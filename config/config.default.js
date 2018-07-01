@@ -1,5 +1,5 @@
 'use strict';
-
+const path = require('path')
 module.exports = appInfo => {
     const config = exports = {
         sequelize: {
@@ -11,7 +11,7 @@ module.exports = appInfo => {
             password: '',
         },
         security: {
-
+            // enable: false
             csrf: {
                 enable: false,
             },
@@ -41,7 +41,7 @@ module.exports = appInfo => {
             // proxy: false,
         },
         cors: {
-            origin: '*',
+            origin: 'https://github.com/',
             allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
         },
         session: {
@@ -49,6 +49,14 @@ module.exports = appInfo => {
             maxAge: 24 * 3600 * 1000, // 1 天
             httpOnly: true,
             encrypt: true,
+        },
+        static: {
+            prefix: '/',
+            dir: path.join(appInfo.baseDir || "", 'app/public'),
+            dynamic: true,
+            preload: false,
+            buffer: false,
+            maxFiles: 100000
         }
 
     };

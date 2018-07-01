@@ -82,6 +82,7 @@ class VolumeService extends Service {
         return volume;
     }
     async addVolumeScore(vid, sid) {
+
         const t = await this.ctx.model.transaction();
         const score = await this.Score.findOne({
             where: {
@@ -92,12 +93,13 @@ class VolumeService extends Service {
             //如果无缓存
             try {
                 const scoredata = await this.ctx.helper.getIssue(sid);
-                // console.log('scoredata:', scoredata.title);
+
+                console.log('scoredata:', scoredata, 'sid:', sid);
                 await this.Score.findOrCreate({
                     //缓存
                     where: {
                         name: scoredata.title,
-                        sid
+                        sid: sid
                     },
                 });
                 const data = await this.ScoreVolume.findOrCreate({

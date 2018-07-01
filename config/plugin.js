@@ -20,10 +20,14 @@ exports.cors = {
     enable: true,
     package: 'egg-cors',
 };
-// module.exports.passportWeibo = {
-//     enable: true,
-//     package: 'egg-passport-weibo',
-// };
+exports.static = {
+        enable: true,
+        package: 'egg-static',
+    }
+    // module.exports.passportWeibo = {
+    //     enable: true,
+    //     package: 'egg-passport-weibo',
+    // };
 
 // had enabled by egg
 // exports.static = true;

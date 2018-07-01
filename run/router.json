@@ -32,8 +32,8 @@
       "GET"
     ],
     "paramNames": [],
-    "path": "user/logout",
-    "regexp": "/^user\\/logout(?:\\/(?=$))?$/",
+    "path": "/user/logout",
+    "regexp": "/^\\/user\\/logout(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

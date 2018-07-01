@@ -98,6 +98,14 @@
     "httpOnly": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
     "encrypt": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
   },
+  "static": {
+    "prefix": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "dir": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "dynamic": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "preload": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "buffer": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
+    "maxFiles": "/Users/dawn/GitHub/bipu-backend/config/config.default.js"
+  },
   "keys": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "middleware": "/Users/dawn/GitHub/bipu-backend/config/config.default.js",
   "helper": {
@@ -148,14 +156,6 @@
     "rotateDuration": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js",
     "maxDays": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-logrotator@3.0.3@egg-logrotator/config/config.default.js"
   },
-  "static": {
-    "prefix": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
-    "dir": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
-    "dynamic": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
-    "preload": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
-    "buffer": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js",
-    "maxFiles": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static/config/config.default.js"
-  },
   "view": {
     "root": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-view@2.1.0@egg-view/config/config.default.js",
     "cache": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-view@2.1.0@egg-view/config/config.local.js",
@@ -183,6 +183,7 @@
       "egg-passport-weibo": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-scripts": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-sequelize": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
+      "egg-static": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "egg-userrole": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "pg": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",
       "pg-hstore": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/config.default.js",

@@ -124,12 +124,12 @@
       "maxDays": 31
     },
     "static": {
-      "prefix": "/public/",
+      "prefix": "/",
       "dir": "/Users/dawn/GitHub/bipu-backend/app/public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
-      "maxFiles": 1000
+      "maxFiles": 100000
     },
     "view": {
       "root": "/Users/dawn/GitHub/bipu-backend/app/view",
@@ -165,7 +165,7 @@
       "callbackURL": "http://127.0.0.1:7001/passport/github/callback"
     },
     "cors": {
-      "origin": "*",
+      "origin": "https://github.com/",
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH"
     },
     "env": "local",
@@ -189,6 +189,7 @@
         "egg-passport-weibo": "^1.0.0",
         "egg-scripts": "^2.5.0",
         "egg-sequelize": "^3.1.4",
+        "egg-static": "^2.1.1",
         "egg-userrole": "^2.0.0",
         "pg": "^7.4.2",
         "pg-hstore": "^2.3.2",
@@ -458,12 +459,12 @@
     },
     "static": {
       "enable": true,
-      "package": "egg-static",
       "name": "static",
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg@2.8.0@egg/config/plugin.js",
+      "from": "/Users/dawn/GitHub/bipu-backend/config/plugin.js",
+      "package": "egg-static",
       "path": "/Users/dawn/GitHub/bipu-backend/node_modules/_egg-static@2.1.1@egg-static",
       "version": "2.1.1"
     },
